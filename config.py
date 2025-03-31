@@ -66,7 +66,7 @@ def draw_rect(screen, x, y, w, h, color):
     pygame.draw.rect(screen, COLORS[color], (x, y, w, h))
     x1, y1 = 200, 250  # Initial rectangle position
 
-def handle_events(x1, y1):
+def handle_events(x1, y1, x2, y2):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return x1, y1, False # To stop the game
@@ -81,4 +81,13 @@ def handle_events(x1, y1):
     if keys[pygame.K_RIGHT]:
         x1 += 10 # Move text right
 
-    return x1, y1, True
+    if keys[pygame.K_w]:
+        y2 -= 10 # Move text up
+    if keys[pygame.K_s]:
+        y2 += 10
+    if keys[pygame.K_a]:
+        x2 -= 10
+    if keys[pygame.K_d]:
+        x2 += 10
+
+    return x1, y1, x2, y2, True
